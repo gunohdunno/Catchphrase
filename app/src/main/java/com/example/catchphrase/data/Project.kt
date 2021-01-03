@@ -8,5 +8,5 @@ import androidx.room.PrimaryKey
 data class Project(
     @PrimaryKey(autoGenerate = true) val id: Long,
     @ColumnInfo(name="projectName") val name: String,
-    @ColumnInfo(name="phrases") val phrase: List<Long>
+    @ColumnInfo(name="phrases") val phrase: String
 )

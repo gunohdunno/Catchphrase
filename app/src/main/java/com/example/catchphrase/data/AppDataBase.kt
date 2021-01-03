@@ -8,7 +8,6 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 
 @Database(entities = [Project::class, Phrase::class], version = 1, exportSchema = false)
-@TypeConverters(Converters::class)
 abstract class AppDataBase : RoomDatabase() {
 
     companion object {

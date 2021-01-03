@@ -1,8 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
-    id "org.jetbrains.kotlin.kapt"
 }
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 30
@@ -47,7 +47,6 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     implementation 'androidx.legacy:legacy-support-core-utils:1.0.0'
-    kapt 'groupId:artifactId:version'
     def room_version = "2.2.6"
     implementation "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
