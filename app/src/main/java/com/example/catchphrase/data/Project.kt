@@ -6,7 +6,8 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName="project_table")
 data class Project(
-    @PrimaryKey(autoGenerate = true) val id: Long,
-    @ColumnInfo(name="projectName") val name: String,
-    @ColumnInfo(name="phrases") val phrase: String
-)
+    @ColumnInfo(name="projectName") var name: String,
+    @ColumnInfo(name="phrases") var phrases: List<Phrase>
+    ) {
+    @PrimaryKey(autoGenerate = true) var id: Int = 0
+}
