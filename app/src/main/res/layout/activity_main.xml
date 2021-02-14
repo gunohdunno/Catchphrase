@@ -24,4 +24,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/appToolBar"/>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/record_fab"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:src="@drawable/ic_record"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:backgroundTint="@color/red"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

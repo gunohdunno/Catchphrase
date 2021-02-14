@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.catchphrase.data.Project
 
-class ProjectAdapter : ListAdapter<Project, ProjectAdapter.ProjectViewHolder>(ProjectComparator()) {
+class ProjectAdapter(private val cellClickListener: CellClickListener) : ListAdapter<Project, ProjectAdapter.ProjectViewHolder>(ProjectComparator()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProjectViewHolder {
         return ProjectViewHolder.create(parent)
@@ -18,6 +18,9 @@ class ProjectAdapter : ListAdapter<Project, ProjectAdapter.ProjectViewHolder>(Pr
     override fun onBindViewHolder(holder: ProjectViewHolder, position: Int) {
         val current = getItem(position)
         holder.bind(current.id, current.name)
+        holder.itemView.setOnClickListener {
+            cellClickListener.onCellClickListener(current)
+        }
     }
 
     class ProjectViewHolder(view : View) : RecyclerView.ViewHolder(view) {
@@ -35,6 +38,7 @@ class ProjectAdapter : ListAdapter<Project, ProjectAdapter.ProjectViewHolder>(Pr
             }
         }
     }
+
     class ProjectComparator : DiffUtil.ItemCallback<Project>() {
         override fun areItemsTheSame(oldItem: Project, newItem: Project): Boolean {
             return oldItem.id == newItem.id
@@ -43,6 +47,10 @@ class ProjectAdapter : ListAdapter<Project, ProjectAdapter.ProjectViewHolder>(Pr
         override fun areContentsTheSame(oldItem: Project, newItem: Project): Boolean {
             return oldItem.phrases.containsAll(newItem.phrases)
         }
+    }
+
+    interface CellClickListener {
+        fun onCellClickListener(data: Project)
     }
 
 }

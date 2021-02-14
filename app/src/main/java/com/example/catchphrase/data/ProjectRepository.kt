@@ -1,6 +1,7 @@
 package com.example.catchphrase.data
 
 import androidx.annotation.WorkerThread
+import androidx.lifecycle.LiveData
 import com.example.catchphrase.viewmodel.PhraseDao
 import com.example.catchphrase.viewmodel.ProjectDao
 import kotlinx.coroutines.flow.Flow
@@ -17,8 +18,16 @@ class ProjectRepository(private val projectDao: ProjectDao, private val phraseDa
         projectDao.insert(project)
     }
 
+    @Suppress("RedundantSuspendModifier")
+    @WorkerThread
+    fun getProject(id : Int) : LiveData<Project> {
+        return projectDao.getProject(id)
+    }
+
     @WorkerThread
     suspend fun deleteAll() {
         projectDao.deleteAll()
     }
+
+
 }

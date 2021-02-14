@@ -6,15 +6,8 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "phrase_table")
 data class Phrase(
-    @PrimaryKey(autoGenerate = true) val id: Long,
-    @ColumnInfo(name = "phraseData") val filePath: String,
-    @ColumnInfo(name = "projectId") val projectId: Long
+    @ColumnInfo(name = "phraseData") var filePath: String,
+    @ColumnInfo(name = "projectId") var projectId: Int
     ) {
-    fun RecordAudio() {
-
-    }
-
-    fun PlayBackAudio() {
-
-    }
+    @PrimaryKey(autoGenerate = true) var id: Int = 0
 }
